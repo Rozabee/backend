@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-const mysql = require("mysql2");
+const { Pool } = require('pg');
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,18 +17,17 @@ app.use(cors());
 
 
 
-const connection = mysql.createConnection({
-
+const pool = new Pool({
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-
+ 
 });
 
+module.exports = pool;
 
-
-connection.connect();
 
 
 
