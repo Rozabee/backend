@@ -1,6 +1,7 @@
 
+require('dotenv').config();
 const express = require("express");
-
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
@@ -11,18 +12,20 @@ const mysql = require("mysql2");
 
 const PORT = process.env.PORT || 3000;
 
-const cors = require('cors');
 
 app.use(cors());
 
 
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT
+  host: "localhost",
+
+  user: "root",
+
+  password: "",
+
+  database: "brewview_app",
+
 });
 
 
