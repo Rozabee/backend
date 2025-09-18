@@ -5,13 +5,12 @@ const cors = require('cors');
 const app = express();
 
 app.use(express.json());
-
+app.use('/images', express.static('public/images'));
 app.use(express.urlencoded({ extended: false }));
 
 const mysql = require("mysql2");
 
 const PORT = process.env.PORT || 3000;
-
 
 app.use(cors());
 
